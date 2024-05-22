@@ -39,7 +39,9 @@ You will be asked to authenticate hosts by adding RSA keys to known hosts. Type 
 ## Step 7 : Install hadoop
 Download hadoop 3.3.6
 
-```wget https://dlcdn.apache.org/hadoop/common/hadoop-3.3.6/hadoop-3.3.6.tar.gz```
+```
+wget https://dlcdn.apache.org/hadoop/common/hadoop-3.3.6/hadoop-3.3.6.tar.gz
+```
 
 Once you’ve downloaded the file, you can unzip it to a folder.
 
@@ -63,7 +65,8 @@ export HADOOP_HDFS_HOME=$HADOOP_HOME
 export HADOOP_YARN_HOME=$HADOOP_HOME
 export HADOOP_COMMON_LIB_NATIVE_DIR=$HADOOP_HOME/lib/native
 export PATH=$PATH:$HADOOP_HOME/sbin:$HADOOP_HOME/bin
-export HADOOP_OPTS="-Djava.library.path=$HADOOP_HOME/lib/native"```
+export HADOOP_OPTS="-Djava.library.path=$HADOOP_HOME/lib/native"
+```
 
 Load the above configuration in the current environment.
 
@@ -78,33 +81,34 @@ Search for the “export JAVA_HOME” and configure it .
 ```JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64```
 
 ## Step 8 : Configuring Hadoop :
-
-    First, you will need to create the namenode and datanode directories inside the Hadoop user home directory. Run the following command to create both directories:
+First, you will need to create the namenode and datanode directories inside the Hadoop user home directory. Run the following command to create both directories:
 
 ```cd hadoop/
-
-mkdir -p ~/hadoopdata/hdfs/{namenode,datanode}```
-
-    Next, edit the core-site.xml file and update with your system hostname:
+mkdir -p ~/hadoopdata/hdfs/{namenode,datanode}
+```
+Next, edit the core-site.xml file and update with your system hostname:
 
 ```nano $HADOOP_HOME/etc/hadoop/core-site.xml```
 
 Change the following name as per your system hostname:
+
 ```
 <configuration>
     <property>
         <name>fs.defaultFS</name>
         <value>hdfs://localhost:9000</value>
     </property>
-</configuration>```
+</configuration>
+```
 
 Save and close the file.
+Then, edit the hdfs-site.xml file:
 
-    Then, edit the hdfs-site.xml file:
+```
+nano $HADOOP_HOME/etc/hadoop/hdfs-site.xml
+```
 
-```nano $HADOOP_HOME/etc/hadoop/hdfs-site.xml```
-
-    Change the NameNode and DataNode directory paths as shown below:
+Change the NameNode and DataNode directory paths as shown below:
 
 ```
 <configuration>
@@ -122,11 +126,11 @@ Save and close the file.
     </property>
  </configuration>```
 
-    Then, edit the mapred-site.xml file:
+Then, edit the mapred-site.xml file:
 
 ```nano $HADOOP_HOME/etc/hadoop/mapred-site.xml```
 
-    Make the following changes:
+Make the following changes:
 ```
 <configuration>
    <property>
@@ -141,44 +145,41 @@ Save and close the file.
       <name>mapreduce.reduce.env</name>
       <value>HADOOP_MAPRED_HOME=$HADOOP_HOME/home/hadoop/hadoop/bin/hadoop</value>
    </property>
-</configuration>```
+</configuration>
+```
+Then, edit the yarn-site.xml file:
 
-
-    Then, edit the yarn-site.xml file:
-
-```nano $HADOOP_HOME/etc/hadoop/yarn-site.xml```
-
-    Make the following changes:
+```
+nano $HADOOP_HOME/etc/hadoop/yarn-site.xml
+```
+Make the following changes:
 ```
 <configuration>
     <property>
         <name>yarn.nodemanager.aux-services</name>
         <value>mapreduce_shuffle</value>
     </property>
-</configuration>```
+</configuration>
+```
 
 Save the file and close it .
 
 ## Step 9 : Start Hadoop cluster:
-
-    Before starting the Hadoop cluster. You will need to format the Namenode as a hadoop user.
-    Run the following command to format the Hadoop Namenode:
+Before starting the Hadoop cluster. You will need to format the Namenode as a hadoop user.
+Run the following command to format the Hadoop Namenode:
 
 ```hdfs namenode -format```
-
-    Once the namenode directory is successfully formatted with hdfs file system, you will see the message “Storage directory /home/hadoop/hadoopdata/hdfs/namenode has been successfully formatted”.
-
-    Then start the Hadoop cluster with the following command.
+Once the namenode directory is successfully formatted with hdfs file system, you will see the message “Storage directory /home/hadoop/hadoopdata/hdfs/namenode has been successfully formatted”.
+Then start the Hadoop cluster with the following command.
 
 ```start-all.sh```
 
-    You can now check the status of all Hadoop services using the jps command:
+You can now check the status of all Hadoop services using the jps command:
 
 ```jps```
 
-Step 13 : Access Hadoop Namenode and Resource Manager :
-
-    First we need to know our ip address,In Ubuntu we need to install net-tools to run ipconfig command, If you installing net-tools for the first time switch to default user :
+## Step 10 : Access Hadoop Namenode and Resource Manager :
+First we need to know our ip address,In Ubuntu we need to install net-tools to run ipconfig command, If you installing net-tools for the first time switch to default user :
 
 ```sudo apt install net-tools```
 
@@ -195,22 +196,24 @@ Here my ip address is 192.168.1.6.
 
 ```http://192.168.1.6:8088```
 
-Step 13 :Verify the Hadoop Cluster :
+## Step 11 :Verify the Hadoop Cluster :
 
 At this point, the Hadoop cluster is installed and configured. Next, we will create some directories in the HDFS filesystem to test the Hadoop.
+Let’s create some directories in the HDFS filesystem using the following command:
 
-    Let’s create some directories in the HDFS filesystem using the following command:
+```
+hdfs dfs -mkdir /test1
+hdfs dfs -mkdir /logs
+```
+Next, run the following command to list the above directory:
 
-```hdfs dfs -mkdir /test1
-hdfs dfs -mkdir /logs```
-
-    Next, run the following command to list the above directory:
-
-```hdfs dfs -ls /```
+```
+hdfs dfs -ls /
+```
 
 You should get the following output:
 
-Step 14 : To stop hadoop services :
+## Step 12 : To stop hadoop services :
 
 To stop the Hadoop service, run the following command as a hadoop user:
 
