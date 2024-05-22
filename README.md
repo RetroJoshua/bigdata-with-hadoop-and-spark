@@ -64,8 +64,9 @@ nano ~/.bashrc
 
 Append the below lines to the file.
 
-```export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
-export HADOOP_HOME=/home/hadoop/hadoop
+```
+export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
+export HADOOP_HOME=/home/cvr/hadoop/
 export HADOOP_INSTALL=$HADOOP_HOME
 export HADOOP_MAPRED_HOME=$HADOOP_HOME
 export HADOOP_COMMON_HOME=$HADOOP_HOME
@@ -206,9 +207,11 @@ jps
 ## Step 10 : Access Hadoop Namenode and Resource Manager :
 First we need to know our ip address,In Ubuntu we need to install net-tools to run ipconfig command, If you installing net-tools for the first time switch to default user :
 
-```sudo apt install net-tools```
+```
+sudo apt install net-tools
+```
 
-    Then run ifconfig command to know our ip address:
+Then run ifconfig command to know our ip address:
 
 ```ifconfig```
 Here my ip address is 192.168.1.6.
