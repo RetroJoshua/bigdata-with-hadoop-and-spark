@@ -1,22 +1,22 @@
-Step 1 : Install Java Development Kit
+## Step 1 : Install Java Development Kit
 
 The default Ubuntu repositories contain Java 8 and Java 11 both. I am using Java 8 because hive only works on this version.Use the following command to install it.
 
 ```sudo apt update && sudo apt install openjdk-8-jdk```
 
-Step 2 : Verify the Java version :
+## Step 2 : Verify the Java version :
 
 Once you have successfully installed it, check the current Java version:
 
 ```java -version```
 
-Step 3 : Install SSH :
+## Step 3 : Install SSH :
 
 SSH (Secure Shell) installation is vital for Hadoop as it enables secure communication between nodes in the Hadoop cluster. This ensures data integrity, confidentiality, and allows for efficient distributed processing of data across the cluster.
 
 ```sudo apt install ssh```
 
-Step 6 : Configure SSH :
+## Step 4 : Configure SSH :
 
 Now configure password-less SSH access for the newly created hadoop user, so I didn’t enter key to save file and passpharse. Generate an SSH keypair first:
 
