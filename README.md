@@ -43,9 +43,7 @@ Download hadoop 3.3.6
 
 Once you’ve downloaded the file, you can unzip it to a folder.
 
-```
-tar -xvzf hadoop-3.3.6.tar.gz
-```
+```tar -xvzf hadoop-3.3.6.tar.gz```
 Rename the extracted folder to remove version information. This is an optional step, but if you don’t want to rename, then adjust the remaining configuration paths.
 
 ```mv hadoop-3.3.6 hadoop```
