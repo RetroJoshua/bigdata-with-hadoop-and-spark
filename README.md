@@ -2,7 +2,9 @@
 
 The default Ubuntu repositories contain Java 8 and Java 11 both. I am using Java 8 because hive only works on this version.Use the following command to install it.
 
-```sudo apt update && sudo apt install openjdk-8-jdk```
+```
+sudo apt update && sudo apt install openjdk-8-jdk
+```
 
 ## Step 2 : Verify the Java version :
 
