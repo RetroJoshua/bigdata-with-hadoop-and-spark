@@ -22,12 +22,13 @@ Now configure password-less SSH access for the newly created hadoop user, so I d
 
 ```ssh-keygen -t rsa```
 
-Step 7 : Set permissions :
+## Step 5 : Set permissions :
 
 Copy the generated public key to the authorized key file and set the proper permissions:
 
 ```cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys   
-chmod 640 ~/.ssh/authorized_keys```
+chmod 640 ~/.ssh/authorized_keys
+```
 
 Step 8 : SSH to the localhost
 
