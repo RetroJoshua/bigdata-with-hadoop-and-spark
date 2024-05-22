@@ -30,13 +30,13 @@ Copy the generated public key to the authorized key file and set the proper perm
 chmod 640 ~/.ssh/authorized_keys
 ```
 
-Step 8 : SSH to the localhost
+## Step 6 : SSH to the localhost
 
 ```ssh localhost```
 
 You will be asked to authenticate hosts by adding RSA keys to known hosts. Type yes and hit Enter to authenticate the localhost.
 
-Step 10 : Install hadoop
+## Step 7 : Install hadoop
 
     Download hadoop 3.3.6
 
@@ -79,7 +79,7 @@ Search for the “export JAVA_HOME” and configure it .
 
 ```JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64```
 
-Step 11 : Configuring Hadoop :
+## Step 8 : Configuring Hadoop :
 
     First, you will need to create the namenode and datanode directories inside the Hadoop user home directory. Run the following command to create both directories:
 
@@ -160,7 +160,8 @@ Save and close the file.
 </configuration>```
 
 Save the file and close it .
-Step 12 : Start Hadoop cluster:
+
+## Step 9 : Start Hadoop cluster:
 
     Before starting the Hadoop cluster. You will need to format the Namenode as a hadoop user.
     Run the following command to format the Hadoop Namenode:
