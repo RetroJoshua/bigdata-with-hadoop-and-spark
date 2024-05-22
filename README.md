@@ -47,14 +47,20 @@ wget https://dlcdn.apache.org/hadoop/common/hadoop-3.3.6/hadoop-3.3.6.tar.gz
 
 Once you’ve downloaded the file, you can unzip it to a folder.
 
-```tar -xvzf hadoop-3.3.6.tar.gz```
+```
+tar -xvzf hadoop-3.3.6.tar.gz
+```
 Rename the extracted folder to remove version information. This is an optional step, but if you don’t want to rename, then adjust the remaining configuration paths.
 
-```mv hadoop-3.3.6 hadoop```
+```
+mv hadoop-3.3.6 hadoop
+```
 
 Next, you will need to configure Hadoop and Java Environment Variables on your system. Open the ~/.bashrc file in your favorite text editor.Here I am using nano editior , to pasting the code we use ctrl+shift+v for saving the file ctrl+x and ctrl+y ,then hit enter:
 
-```nano ~/.bashrc```
+```
+nano ~/.bashrc
+```
 
 Append the below lines to the file.
 
@@ -72,15 +78,21 @@ export HADOOP_OPTS="-Djava.library.path=$HADOOP_HOME/lib/native"
 
 Load the above configuration in the current environment.
 
-```source ~/.bashrc```
+```
+source ~/.bashrc
+```
 
 You also need to configure JAVA_HOME in hadoop-env.sh file. Edit the Hadoop environment variable file in the text editor:
 
-```nano $HADOOP_HOME/etc/hadoop/hadoop-env.sh```
+```
+nano $HADOOP_HOME/etc/hadoop/hadoop-env.sh
+```
 
 Search for the “export JAVA_HOME” and configure it .
 
-```JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64```
+```
+JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
+```
 
 ## Step 8 : Configuring Hadoop :
 First, you will need to create the namenode and datanode directories inside the Hadoop user home directory. Run the following command to create both directories:
@@ -90,7 +102,9 @@ mkdir -p ~/hadoopdata/hdfs/{namenode,datanode}
 ```
 Next, edit the core-site.xml file and update with your system hostname:
 
-```nano $HADOOP_HOME/etc/hadoop/core-site.xml```
+```
+nano $HADOOP_HOME/etc/hadoop/core-site.xml
+```
 
 Change the following name as per your system hostname:
 
@@ -126,11 +140,14 @@ Change the NameNode and DataNode directory paths as shown below:
         <name>dfs.datanode.data.dir</name>
         <value>file:///home/hadoop/hadoopdata/hdfs/datanode</value>
     </property>
- </configuration>```
+ </configuration>
+```
 
 Then, edit the mapred-site.xml file:
 
-```nano $HADOOP_HOME/etc/hadoop/mapred-site.xml```
+```
+nano $HADOOP_HOME/etc/hadoop/mapred-site.xml
+```
 
 Make the following changes:
 ```
@@ -170,15 +187,21 @@ Save the file and close it .
 Before starting the Hadoop cluster. You will need to format the Namenode as a hadoop user.
 Run the following command to format the Hadoop Namenode:
 
-```hdfs namenode -format```
+```
+hdfs namenode -format
+```
 Once the namenode directory is successfully formatted with hdfs file system, you will see the message “Storage directory /home/hadoop/hadoopdata/hdfs/namenode has been successfully formatted”.
 Then start the Hadoop cluster with the following command.
 
-```start-all.sh```
+```
+start-all.sh
+```
 
 You can now check the status of all Hadoop services using the jps command:
 
-```jps```
+```
+jps
+```
 
 ## Step 10 : Access Hadoop Namenode and Resource Manager :
 First we need to know our ip address,In Ubuntu we need to install net-tools to run ipconfig command, If you installing net-tools for the first time switch to default user :
