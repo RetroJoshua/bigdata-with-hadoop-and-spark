@@ -50,11 +50,11 @@ Rename the extracted folder to remove version information. This is an optional s
 
 ```mv hadoop-3.3.6 hadoop```
 
-    Next, you will need to configure Hadoop and Java Environment Variables on your system. Open the ~/.bashrc file in your favorite text editor.Here I am using nano editior , to pasting the code we use ctrl+shift+v for saving the file ctrl+x and ctrl+y ,then hit enter:
+Next, you will need to configure Hadoop and Java Environment Variables on your system. Open the ~/.bashrc file in your favorite text editor.Here I am using nano editior , to pasting the code we use ctrl+shift+v for saving the file ctrl+x and ctrl+y ,then hit enter:
 
 ```nano ~/.bashrc```
 
-    Append the below lines to the file.
+Append the below lines to the file.
 
 ```export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
 export HADOOP_HOME=/home/hadoop/hadoop
@@ -67,11 +67,11 @@ export HADOOP_COMMON_LIB_NATIVE_DIR=$HADOOP_HOME/lib/native
 export PATH=$PATH:$HADOOP_HOME/sbin:$HADOOP_HOME/bin
 export HADOOP_OPTS="-Djava.library.path=$HADOOP_HOME/lib/native"```
 
-    Load the above configuration in the current environment.
+Load the above configuration in the current environment.
 
 ```source ~/.bashrc```
 
-    You also need to configure JAVA_HOME in hadoop-env.sh file. Edit the Hadoop environment variable file in the text editor:
+You also need to configure JAVA_HOME in hadoop-env.sh file. Edit the Hadoop environment variable file in the text editor:
 
 ```nano $HADOOP_HOME/etc/hadoop/hadoop-env.sh```
 
