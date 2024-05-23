@@ -10,31 +10,40 @@ sudo apt update && sudo apt install openjdk-8-jdk
 
 Once you have successfully installed it, check the current Java version:
 
-```java -version```
+```
+java -version
+```
 
 ## Step 3 : Install SSH :
 
 SSH (Secure Shell) installation is vital for Hadoop as it enables secure communication between nodes in the Hadoop cluster. This ensures data integrity, confidentiality, and allows for efficient distributed processing of data across the cluster.
 
-```sudo apt install ssh```
+```
+sudo apt install ssh
+```
 
 ## Step 4 : Configure SSH :
 
 Now configure password-less SSH access for the newly created hadoop user, so I didn’t enter key to save file and passpharse. Generate an SSH keypair first:
 
-```ssh-keygen -t rsa```
+```
+ssh-keygen -t rsa
+```
 
 ## Step 5 : Set permissions :
 
 Copy the generated public key to the authorized key file and set the proper permissions:
 
-```cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys   
+```
+cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys   
 chmod 640 ~/.ssh/authorized_keys
 ```
 
 ## Step 6 : SSH to the localhost
 
-```ssh localhost```
+```
+ssh localhost
+```
 
 You will be asked to authenticate hosts by adding RSA keys to known hosts. Type yes and hit Enter to authenticate the localhost.
 
