@@ -12,10 +12,10 @@ NC='\033[0m' # No Color
 # Function to print status
 print_status() {
     if [ $? -eq 0 ]; then
-        echo -e "${GREEN}[✓] $1${NC}"
+    echo -e "${GREEN}[✓] $1${NC}"
     else
-        echo -e "${RED}[✗] $1${NC}"
-        echo -e "${YELLOW}Error occurred. Please check the installation.${NC}"
+    echo -e "${RED}[✗] $1${NC}"
+    echo -e "${YELLOW}Error occurred. Please check the installation.${NC}"
     fi
 }
 
@@ -134,12 +134,12 @@ cat > $HADOOP_HOME/etc/hadoop/core-site.xml << EOL
 <?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
 <configuration>
     <property>
-        <name>fs.defaultFS</name>
-        <value>hdfs://localhost:9000</value>
+    <name>fs.defaultFS</name>
+    <value>hdfs://localhost:9000</value>
     </property>
     <property>
-        <name>hadoop.tmp.dir</name>
-        <value>$HADOOP_DATA/tmp</value>
+    <name>hadoop.tmp.dir</name>
+    <value>$HADOOP_DATA/tmp</value>
     </property>
 </configuration>
 EOL
@@ -150,16 +150,16 @@ cat > $HADOOP_HOME/etc/hadoop/hdfs-site.xml << EOL
 <?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
 <configuration>
     <property>
-        <name>dfs.replication</name>
-        <value>1</value>
+    <name>dfs.replication</name>
+    <value>1</value>
     </property>
     <property>
-        <name>dfs.namenode.name.dir</name>
-        <value>$HADOOP_DATA/namenode</value>
+    <name>dfs.namenode.name.dir</name>
+    <value>$HADOOP_DATA/namenode</value>
     </property>
     <property>
-        <name>dfs.datanode.data.dir</name>
-        <value>$HADOOP_DATA/datanode</value>
+    <name>dfs.datanode.data.dir</name>
+    <value>$HADOOP_DATA/datanode</value>
     </property>
 </configuration>
 EOL
@@ -170,12 +170,24 @@ cat > $HADOOP_HOME/etc/hadoop/mapred-site.xml << EOL
 <?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
 <configuration>
     <property>
-        <name>mapreduce.framework.name</name>
-        <value>yarn</value>
+    <name>mapreduce.framework.name</name>
+    <value>yarn</value>
     </property>
     <property>
-        <name>mapreduce.application.classpath</name>
-        <value>\$HADOOP_HOME/share/hadoop/mapreduce/*:\$HADOOP_HOME/share/hadoop/mapreduce/lib/*</value>
+    <name>mapreduce.application.classpath</name>
+    <value>\$HADOOP_HOME/share/hadoop/mapreduce/*:\$HADOOP_HOME/share/hadoop/mapreduce/lib/*</value>
+    </property>
+    <property>
+    <name>yarn.app.mapreduce.am.env</name>
+    <value>HADOOP_MAPRED_HOME=/usr/local/hadoop</value>
+    </property>
+    <property>
+    <name>mapreduce.map.env</name>
+    <value>HADOOP_MAPRED_HOME=/usr/local/hadoop</value>
+    </property>
+    <property>
+    <name>mapreduce.reduce.env</name>
+    <value>HADOOP_MAPRED_HOME=/usr/local/hadoop</value>
     </property>
 </configuration>
 EOL
@@ -186,12 +198,12 @@ cat > $HADOOP_HOME/etc/hadoop/yarn-site.xml << EOL
 <?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
 <configuration>
     <property>
-        <name>yarn.nodemanager.aux-services</name>
-        <value>mapreduce_shuffle</value>
+    <name>yarn.nodemanager.aux-services</name>
+    <value>mapreduce_shuffle</value>
     </property>
     <property>
-        <name>yarn.nodemanager.env-whitelist</name>
-        <value>JAVA_HOME,HADOOP_COMMON_HOME,HADOOP_HDFS_HOME,HADOOP_CONF_DIR,CLASSPATH_PREPEND_DISTCACHE,HADOOP_YARN_HOME,HADOOP_MAPRED_HOME</value>
+    <name>yarn.nodemanager.env-whitelist</name>
+    <value>JAVA_HOME,HADOOP_COMMON_HOME,HADOOP_HDFS_HOME,HADOOP_CONF_DIR,CLASSPATH_PREPEND_DISTCACHE,HADOOP_YARN_HOME,HADOOP_MAPRED_HOME</value>
     </property>
 </configuration>
 EOL
