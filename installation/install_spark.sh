@@ -14,31 +14,6 @@ if ! command -v java &> /dev/null; then
     exit 1
 fi
 
-# Verify HDFS installation
-if ! command -v hdfs &> /dev/null; then
-    echo "ERROR: HDFS is not installed. Please install Hadoop ${HADOOP_VERSION} first."
-    exit 1
-fi
-
-# Check HDFS version (modified check)
-INSTALLED_HADOOP_VERSION=$(hdfs version | grep 'Hadoop' | awk '{print $2}')
-if [[ "${INSTALLED_HADOOP_VERSION}" != "${HADOOP_VERSION}" ]]; then
-    echo "ERROR: HDFS version mismatch. Found ${INSTALLED_HADOOP_VERSION}, required ${HADOOP_VERSION}"
-    exit 1
-fi
-
-# Check HADOOP_HOME is set
-if [ -z "${HADOOP_HOME}" ]; then
-    echo "ERROR: HADOOP_HOME environment variable is not set"
-    exit 1
-fi
-
-# Verify HDFS is running
-if ! hdfs dfsadmin -report &> /dev/null; then
-    echo "ERROR: HDFS is not running. Start HDFS first with 'start-dfs.sh'"
-    exit 1
-fi
-
 # ... rest of the script remains identical from the download section onward ...# Download Spark using official mirror
 echo "Downloading Spark ${SPARK_VERSION}..."
 wget "${SPARK_URL}" -O "spark-${SPARK_VERSION}-bin-hadoop3.tgz"
